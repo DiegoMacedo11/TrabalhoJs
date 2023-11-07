@@ -8,7 +8,6 @@ body {
   color: #000; /* Cor do texto padrão */
 }
 
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -27,6 +26,11 @@ header {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilos do cabeçalho fixo ao rolar (sticky header) */
+.sticky {
+  background-color: #333; /* Cor de fundo do cabeçalho no modo escuro */
+  color: #fff; /* Cor das letras do cabeçalho no modo escuro */
+}
 
 nav {
   display: flex;
@@ -36,10 +40,12 @@ nav {
   color: #000; /* Cor das letras do cabeçalho no light mode */
   transition: color 0.3s;
 }
+
 .logo img {
   width: 100px;
   height: auto;
 }
+
 /* Estilos dos botões de idioma e modo (mode buttons) */
 .flag-button,
 .mode-button {
@@ -79,9 +85,10 @@ nav {
 /* Estilos do conteúdo principal (main) */
 main {
   background-color: #f2f2f2; /* Cor de fundo do conteúdo principal */
-  margin-top: 160px;
   padding: 20px;
   border: 1px solid #ddd; /* Borda ao redor do conteúdo principal */
+  margin-top: 160px;
+  transition: margin-top 0.3s; /* Efeito de transição ao rolar */
 }
 
 /* Estilos do slideshow */
@@ -169,20 +176,83 @@ footer {
   margin-top: 20px;
   font-size: 14px;
 }
-
 /* Estilos do modo escuro (dark mode) */
-.dark-mode .slide img {
-  filter: brightness(70%);
+.dark-mode {
+  background-color: #333; /* Cor de fundo do modo escuro */
+  color: #fff; /* Cor do texto no modo escuro */
+
+  /* Altere os estilos de elementos específicos no modo escuro aqui, se necessário */
 }
 
-/* Estilos para o botão de Modo Escuro no Modo Escuro */
+/* Corrija as cores no conteúdo principal (main) */
+.dark-mode main {
+  background-color: #000; /* Cor de fundo do conteúdo principal no modo escuro */
+}
+
+/* Corrija as cores no cabeçalho (header) */
+.dark-mode header {
+  background-color: #222; /* Cor de fundo do cabeçalho no modo escuro */
+  color: #fff; /* Cor das letras do cabeçalho no modo escuro */
+}
+
+/* Corrija as cores nos botões de idioma e modo (mode buttons) */
+.dark-mode .flag-button,
+.dark-mode .mode-button {
+  color: #fff; /* Cor das letras dos botões de idioma e modo no modo escuro */
+}
+
+/* Corrija as cores nos botões de Modo Escuro e Modo Claro */
 .dark-mode #dark-mode-toggle {
   background-color: #fff;
   color: #333;
 }
 
-/* Estilos para o botão de Modo Claro no Modo Escuro */
 .dark-mode #light-mode-toggle {
   background-color: #fff;
   color: #333;
 }
+
+/*efeito carrocel */
+#slideshow {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px; /* Ajuste a largura máxima conforme necessário */
+  margin: 0 auto;
+}
+
+.slide {
+  flex: 0 0 100%;
+  transition: transform 0.5s;
+}
+
+.slide img {
+  max-width: 100%;
+  height: auto;
+}
+
+#slideshow .controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#slideshow .controls button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+#slideshow .controls button:hover {
+  color: #007bff; /* Cor de destaque ao passar o mouse */
+}
+
+#slideshow .controls button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
